@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Birthday Surprise Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        /* ========== [STYLES EXACTLY AS ORIGINAL - KEPT INTACT] ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff4d8d;
+            --secondary: #6a11cb;
+            --accent: #ffd166;
+            --light: #fff9f2;
+            --dark: #2d3047;
+            --success: #4cd964;
+            --warning: #ff9500;
+            --info: #5ac8fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .birthday-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--info));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 77, 141, 0.5)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 77, 141, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 20px 20px;
+            animation: progressShine 1s linear infinite;
+        }
+
+        @keyframes progressShine {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .tasks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .task-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(255, 77, 141, 0.2);
+        }
+
+        .task-card.locked {
+            opacity: 0.7;
+            filter: grayscale(0.5);
+        }
+
+        .task-card.completed {
+            border-color: var(--success);
+            background: rgba(76, 217, 100, 0.05);
+        }
+
+        .task-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+        }
+
+        .task-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .task-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .task-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .task-button {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .task-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+        }
+
+        .task-button:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .task-status {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .task-status.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .task-status.locked {
+            background: var(--warning);
+            color: white;
+        }
+
+        .surprise-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .surprise-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-surprise {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-surprise:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .surprise-title {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .message-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            position: relative;
+        }
+
+        .message-box::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 8rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .message-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: justify;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .message-signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-top: 20px;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -50px;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .celebration.active {
+            display: block;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--firework-color);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            bottom: -100px;
+            opacity: 0;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.5);
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .final-surprise {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .final-gift {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .final-gift:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .gift-lid {
+            width: 110%;
+            height: 30%;
+            background: linear-gradient(45deg, #ff2b7a, #ff6b9d);
+            border-radius: 20px 20px 0 0;
+            position: absolute;
+            top: -15%;
+            left: -5%;
+            transition: top 0.5s ease;
+        }
+
+        .gift-box.open .gift-lid {
+            top: -40%;
+            transform: rotateX(180deg);
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .gift-bow::before, .gift-bow::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .gift-bow::before {
+            top: 10px;
+            left: -40px;
+            transform: rotate(-45deg);
+        }
+
+        .gift-bow::after {
+            top: 10px;
+            right: -40px;
+            transform: rotate(45deg);
+        }
+
+        .gift-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gift-box.open .gift-content {
+            opacity: 1;
+        }
+
+        @media (max-width: 992px) {
+            .tasks-container { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+            .birthday-title { font-size: 3.5rem; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .birthday-title { font-size: 2.8rem; }
+            .tasks-container { grid-template-columns: 1fr; }
+            .timeline::before { left: 30px; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 70px; padding-right: 20px; }
+            .timeline-content::before { left: -40px !important; }
+        }
+        @media (max-width: 480px) {
+            .birthday-title { font-size: 2.2rem; }
+            .surprise-content { padding: 25px; }
+            .message-box { padding: 25px; }
+            .message-text { font-size: 1.2rem; }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: var(--primary);
+            font-size: 24px;
+            opacity: 0;
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .instructions-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .instructions-modal.active { display: flex; }
+        .modal-content {
+            background: linear-gradient(135deg, rgba(45, 48, 71, 0.95), rgba(26, 26, 46, 0.95));
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            border: 2px solid var(--primary);
+            position: relative;
+            animation: modalAppear 0.5s ease;
+        }
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close:hover { color: var(--primary); }
+        .modal-title {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-instructions {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .modal-button {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .modal-button.primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        .modal-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .modal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebration-counter {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .counter-icon { font-size: 1.5rem; color: var(--accent); }
+        .counter-text { font-size: 1.1rem; color: white; }
+        .counter-number { font-weight: bold; color: var(--accent); font-size: 1.3rem; }
+        
+        /* 🥠 Fortune Cookie Styles */
+        .fortune-cookie-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .cookie-jar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .cookie {
+            width: 120px;
+            height: 120px;
+            background: #e3b089;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #8b5a2b;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 4px solid #c49a6c;
+        }
+        .cookie:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 209, 102, 0.8);
+        }
+        .cookie.cracked {
+            background: #dba875;
+            border-color: #ffd166;
+            box-shadow: 0 0 20px gold;
+        }
+        .fortune-message-area {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 6px solid var(--accent);
+            font-size: 1.6rem;
+            font-family: 'Dancing Script', cursive;
+            color: #ffecb0;
+            min-height: 150px;
+        }
+        .fortune-btn {
+            background: linear-gradient(45deg, #ffac5e, #ff8c5a);
+            border: none;
+            color: #2d1b0e;
+            font-weight: bold;
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .fortune-btn:hover:enabled {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px #ffbe5c;
+        }
+        .fortune-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="stars" id="starsContainer"></div>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <!-- Celebration Effects -->
+    <div class="celebration" id="celebrationContainer"></div>
+    
+    <!-- Celebration Counter -->
+    <div class="celebration-counter">
+        <i class="fas fa-gift counter-icon"></i>
+        <span class="counter-text">Surprises unlocked: </span>
+        <span class="counter-number" id="completedCounter">0/8</span>
+    </div>
+    
+    <!-- Instructions Modal -->
+    <div class="instructions-modal" id="instructionsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title" id="modalTitle">Task Instructions</h2>
+            <div class="modal-instructions" id="modalInstructions"></div>
+            <div class="modal-actions">
+                <button class="modal-button primary" id="startTask">Start Task</button>
+                <button class="modal-button secondary" id="cancelTask">Not Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 🌟🌈 FIXED BACKGROUND BIRTHDAY MUSIC - MULTIPLE FORMATS & INITIATE LOAD -->
+    <audio id="birthdayMusic" loop preload="auto">
+        <source src="aud1.mp3" type="audio/mp3">
+        <source src="aud2.mp3.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="birthday-title">🎂 Ultimate Birthday Surprise Journey 🎁</h1>
+            <p class="subtitle">Complete each task to unlock amazing birthday surprises!</p>
+            <!-- Music control with autoplay trigger -->
+            <div style="margin-top:10px; color:var(--accent); display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+                <i class="fas fa-volume-up"></i> Background birthday melody 
+                <button id="musicToggleBtn" style="background: rgba(255,255,255,0.15); border: 1px solid var(--accent); border-radius: 30px; padding: 8px 20px; color: white; cursor: pointer;">
+                    <i class="fas fa-play"></i> Play Music
+                </button>
+                <span id="musicStatus" style="font-size:0.9rem; color:#ddd;">(click to start)</span>
+            </div>
+        </header>
+        
+        <!-- Progress Section -->
+        <section class="progress-container">
+            <div class="progress-header">
+                <h2 class="progress-title">Your Birthday Adventure Progress</h2>
+                <i class="fas fa-map-signs" style="font-size: 2rem; color: var(--accent);"></i>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text"><span id="completedTasks">0</span> out of 8 tasks completed</p>
+        </section>
+        
+        <!-- Tasks Grid -->
+        <section class="tasks-container" id="tasksContainer">
+            <!-- Tasks will be dynamically generated here -->
+        </section>
+        
+        <!-- Surprise Content Area -->
+        <section class="surprise-content" id="surpriseContent">
+            <button class="close-surprise" id="closeSurprise">&times;</button>
+            <div id="surpriseContentInner">
+                <!-- Surprise content will be loaded here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ======================
+        // DATA AND CONFIGURATION
+        // ======================
+        
+        const RECIPIENT_NAME = "Special Someone";
+        const RECIPIENT_AGE = "??";
+        
+        const birthdayData = {
+            recipientName: RECIPIENT_NAME,
+            age: RECIPIENT_AGE,
+            tasks: [
+                {
+                    id: 1,
+                    title: "Birthday Message",
+                    icon: "fas fa-envelope-open-text",
+                    description: "Read a heartfelt birthday message written just for you.",
+                    instructions: "Take a deep breath and get ready to read a special message crafted with love. This message contains warm wishes and heartfelt thoughts for your special day.",
+                    status: "available",
+                    type: "message",
+                    surprise: {
+                        title: "A Special Message Just For You 💝",
+                        content: `
+                            <div class="message-container">
+                                <div class="message-box">
+                                    <p class="message-text">
+                                        My Dearest Priyanka 💝🥰,woh sorry Domabari<br><br>
+                                        On this Beautiful day, as the sun rises to celebrate your existence, I want you to know how incredibly special you are. 
+                                        Today marks another revolution around the sun, another chapter in the beautiful story that is your life.<br><br>
+                                        You are a wonderful person. Your kindness shines like the morning sun and makes everyone around you feel happy, your laughter is music to the soul, 
+                                        and your spirit shines brighter than any star in the night sky. The world is genuinely a better place because you're in it.<br><br>
+                                        As you celebrate this birthday, I wish for you:<br>
+                                        • Moments that take your breath away with their beauty<br>
+                                        • Laughter that echoes through your days<br>
+                                        • Dreams that soar higher than you ever imagined<br>
+                                        • Love that surrounds you like a warm embrace<br>
+                                        • Adventures that fill your soul with joy<br><br>
+                                        May this new chapter of your life be filled with more joy than your heart can hold, more opportunities than you can count, 
+                                        and more blessings than you ever dreamed possible. May you continue to grow, not just in years, but in wisdom, kindness, and happiness.<br><br>
+                                        Remember that you are loved beyond measure, cherished beyond words, and appreciated more than you know. Today is your day - 
+                                        a day to bask in the love of those around you, to dream big dreams, and to celebrate the incredible person you've become.<br><br>
+                                        Happy Birthday, dear one. May your day be as bright as your smile and as wonderful as you are.
+                                    </p>
+                                    <div class="message-signature">With all my love ❤️</div>
+                                </div>
+                            </div>
+                        `
+                    }
+                },
+                {
+                    id: 2,
+                    title: "Memory Lane",
+                    icon: "fas fa-history",
+                    description: "Take a walk down memory lane with special moments.",
+                    instructions: "Let's revisit some beautiful memories and moments that have made your journey special. Each memory is a precious gem in the treasure chest of life.",
+                    status: "locked",
+                    type: "timeline",
+                    surprise: {
+                        title: "Beautiful Memories Timeline 📜",
+                        content: `
+                            <div class="timeline">
+                                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">The Beginning</div><p>The day you came into this world, bringing joy and light to everyone around you. A star was born that day.</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">First Steps</div><p>Those wobbly first steps that marked the beginning of your journey of exploration and discovery.</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">School Days</div><p>Learning, growing, making friends, and discovering the world through curious eyes.</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">Milestone Achievements</div><p>Each accomplishment, big or small, that shaped you into the amazing person you are today.</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><div class="timeline-date">Today - Your Birthday!</div><p>This special moment, celebrating you and all the wonderful experiences yet to come.</p></div></div>
+                            </div>
+                        `
+                    }
+                },
+                {
+                    id: 3,
+                    title: "Birthday Gallery",
+                    icon: "fas fa-images",
+                    description: "View a collection of beautiful birthday-themed images.",
+                    instructions: "Browse through this special gallery of birthday-themed images. Each picture represents a wish, a dream, or a celebration for your special day.",
+                    status: "locked",
+                    type: "gallery",
+                    surprise: {
+                        title: "Birthday Celebration Gallery 🎨",
+                        content: `
+                            <div class="image-gallery">
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Birthday Cake" class="gallery-image"><div class="image-overlay"><h3>Sweet Celebrations</h3><p>May your year be as sweet as this cake!</p></div></div>
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Balloons" class="gallery-image"><div class="image-overlay"><h3>Reach for the Stars</h3><p>Soar high like these balloons!</p></div></div>
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1532117182044-031e7cd916ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Gifts" class="gallery-image"><div class="image-overlay"><h3>Special Surprises</h3><p>Unwrap the joy of today!</p></div></div>
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Celebration" class="gallery-image"><div class="image-overlay"><h3>Joyful Moments</h3><p>Celebrate every moment!</p></div></div>
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Birthday Flowers" class="gallery-image"><div class="image-overlay"><h3>Blooming Wishes</h3><p>Like flowers, may your happiness bloom!</p></div></div>
+                                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Birthday Party" class="gallery-image"><div class="image-overlay"><h3>Together We Celebrate</h3><p>Surrounded by love and joy today!</p></div></div>
+                            </div>
+                        `
+                    }
+                },
+                {
+                    id: 4,
+                    title: "Virtual Cake",
+                    icon: "fas fa-birthday-cake",
+                    description: "Make a wish and blow out the candles on your virtual cake.",
+                    instructions: "Make a secret birthday wish! When you're ready, blow on your screen or click the flame to blow out the candles. Your wish will come true!",
+                    status: "locked",
+                    type: "cake",
+                    surprise: {
+                        title: "Make a Birthday Wish! 🎂",
+                        content: `
+                            <div style="text-align: center; padding: 40px;">
+                                <div style="position: relative; width: 300px; height: 200px; margin: 0 auto;">
+                                    <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 80px; background: linear-gradient(to right, #f8c8dc, #ffafcc); border-radius: 50% 50% 0 0;"></div>
+                                    <div style="position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); width: 220px; height: 40px; background: linear-gradient(to right, #ffafcc, #ff8fab); border-radius: 50% 50% 0 0;"></div>
+                                    <div style="position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%); width: 240px; height: 30px; background: linear-gradient(to right, #ff8fab, #fb6f92); border-radius: 50% 50% 0 0;"></div>
+                                    <div id="candle1" style="position: absolute; bottom: 120px; left: 40%; width: 10px; height: 40px; background: linear-gradient(to top, #ffd166, #ffcc00); border-radius: 5px;"><div id="flame1" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 20px; height: 30px; background: radial-gradient(circle, #ff9500, #ff2e00); border-radius: 50% 50% 20% 20%; animation: flicker 0.5s infinite alternate;"></div></div>
+                                    <div id="candle2" style="position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); width: 10px; height: 40px; background: linear-gradient(to top, #ffd166, #ffcc00); border-radius: 5px;"><div id="flame2" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 20px; height: 30px; background: radial-gradient(circle, #ff9500, #ff2e00); border-radius: 50% 50% 20% 20%; animation: flicker 0.5s infinite alternate 0.2s;"></div></div>
+                                    <div id="candle3" style="position: absolute; bottom: 120px; left: 60%; width: 10px; height: 40px; background: linear-gradient(to top, #ffd166, #ffcc00); border-radius: 5px;"><div id="flame3" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 20px; height: 30px; background: radial-gradient(circle, #ff9500, #ff2e00); border-radius: 50% 50% 20% 20%; animation: flicker 0.5s infinite alternate 0.4s;"></div></div>
+                                </div>
+                                <button id="blowCandles" style="margin-top: 40px; padding: 15px 40px; background: linear-gradient(45deg, #ff4d8d, #6a11cb); color: white; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease;"><i class="fas fa-wind"></i> Blow Out Candles & Make a Wish!</button>
+                                <p id="wishMessage" style="margin-top: 20px; font-size: 1.2rem; color: var(--accent); opacity: 0;"></p>
+                            </div>
+                            <style>@keyframes flicker {0% { transform: translateX(-50%) scale(1); opacity: 1; } 100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }} @keyframes blowOut {0% { transform: translateX(-50%) scale(1); opacity: 1; } 100% { transform: translateX(-50%) scale(0) rotate(45deg); opacity: 0; }}</style>
+                        `
+                    }
+                },
+                {
+                    // 🆕 NEW TASK: Birthday Fortune Cookies (replaces Wish Upon a Star)
+                    id: 5,
+                    title: "Fortune Cookies",
+                    icon: "fas fa-cookie-bite",
+                    description: "Crack open virtual fortune cookies for birthday blessings.",
+                    instructions: "Click on the fortune cookies to crack them open. Each cookie contains a unique birthday blessing or fortune. Collect all 6 fortunes!",
+                    status: "locked",
+                    type: "fortune",
+                    surprise: {
+                        title: "🥠 Birthday Fortune Cookies 🥠",
+                        content: `
+                            <div class="fortune-cookie-container">
+                                <div class="cookie-jar" id="cookieJar">
+                                    <!-- 6 cookies will be generated here by JS -->
+                                </div>
+                                <div class="fortune-message-area" id="fortuneDisplay">
+                                    ✨ Click a cookie to reveal your birthday fortune ✨
+                                </div>
+                                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                                    <button id="fortuneCompleteBtn" class="fortune-btn" disabled>
+                                        <i class="fas fa-gift"></i> Unlock All Fortunes to Finish
+                                    </button>
+                                </div>
+                                <p id="cookieCounter" style="margin-top: 20px; color: var(--accent);">Cookies cracked: 0/6</p>
+                            </div>
+                        `
+                    }
+                },
+                {
+                    id: 6,
+                    title: "Wisdom & Wishes",
+                    icon: "fas fa-scroll",
+                    description: "Receive birthday wisdom and wishes from around the world.",
+                    instructions: "Open this treasure chest of birthday wisdom! Each piece of advice or wish comes from different cultures and traditions around the world.",
+                    status: "locked",
+                    type: "wisdom",
+                    surprise: {
+                        title: "Birthday Wisdom from Around the World 🌍",
+                        content: `
+                            <div style="max-width: 800px; margin: 0 auto;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; margin-top: 30px;">
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #ff4d8d;"><h3 style="color: var(--accent); margin-bottom: 15px;">Irish Blessing</h3><p>"May your pockets be heavy and your heart be light. May good luck pursue you each morning and night."</p></div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #6a11cb;"><h3 style="color: var(--accent); margin-bottom: 15px;">Japanese Wisdom</h3><p>"Like the cherry blossom that blooms beautifully each spring, may each year bring you renewed beauty and joy."</p></div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #4cd964;"><h3 style="color: var(--accent); margin-bottom: 15px;">African Proverb</h3><p>"If you want to go fast, go alone. If you want to go far, go together. May your journey be long and filled with good company."</p></div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #ff9500;"><h3 style="color: var(--accent); margin-bottom: 15px;">Native American Wish</h3><p>"May the sun bring you new energy by day, may the moon softly restore you by night, may the rain wash away your worries, and may you walk gently through the world."</p></div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #5ac8fa;"><h3 style="color: var(--accent); margin-bottom: 15px;">Italian Toast</h3><p>"Cent'anni! May you live a hundred years, with an extra year to repent!"</p></div>
+                                    <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 15px; border-left: 5px solid #ffcc00;"><h3 style="color: var(--accent); margin-bottom: 15px;">Chinese Blessing</h3><p>"May your happiness be as boundless as the Eastern Sea, and may you live a life as long as the Southern Mountain."</p></div>
+                                </div>
+                                <div style="text-align: center; margin-top: 40px;">
+                                    <button id="generateWish" style="padding: 15px 40px; background: linear-gradient(45deg, #ff4d8d, #6a11cb); color: white; border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer;"><i class="fas fa-random"></i> Get Another Random Wish</button>
+                                    <p id="randomWish" style="margin-top: 20px; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; font-size: 1.2rem; display: none;"></p>
+                                </div>
+                            </div>
+                        `
+                    }
+                },
+                {
+                    id: 7,
+                    title: "Birthday Quiz",
+                    icon: "fas fa-question-circle",
+                    description: "Test your birthday knowledge with a fun quiz!",
+                    instructions: "How much do you know about birthdays around the world? Take this fun quiz to find out! Each correct answer brings you closer to a special surprise.",
+                    status: "locked",
+                    type: "quiz",
+                    surprise: {
+                        title: "Birthday Trivia Challenge 🧠",
+                        content: `
+                            <div style="max-width: 800px; margin: 0 auto;">
+                                <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                                    <h3 style="color: var(--accent); margin-bottom: 20px; text-align: center;">Question <span id="currentQuestion">1</span> of 5</h3>
+                                    <p id="quizQuestion" style="font-size: 1.3rem; text-align: center; margin-bottom: 30px;"></p>
+                                    <div id="quizOptions" style="display: grid; gap: 15px;"></div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div><p style="font-size: 1.2rem;">Score: <span id="quizScore">0</span>/5</p></div>
+                                    <button id="nextQuestion" style="padding: 12px 30px; background: linear-gradient(45deg, #ff4d8d, #6a11cb); color: white; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer; display: none;">Next Question <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                                <div id="quizResult" style="margin-top: 30px; padding: 25px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; display: none;"></div>
+                            </div>
+                            <style>
+                                .quiz-option { padding: 15px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; }
+                                .quiz-option:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
+                                .quiz-option.correct { background: rgba(76, 217, 100, 0.3); border-color: #4cd964; }
+                                .quiz-option.incorrect { background: rgba(255, 59, 48, 0.3); border-color: #ff3b30; }
+                            </style>
+                        `
+                    }
+                },
+                  
+                    
+                        {
+                        id: 8,
+                        title: "Shayari for You",
+                        icon: "fas fa-book-open",
+                        description: "Unlock the ultimate birthday surprise with a heartfelt shayari!",
+                        instructions: "Click the gift box to reveal a birthday shayari made with love. Read each shayari slowly and feel every word from the heart. When you've finished, click the celebration button to unlock a special surprise waiting just for you.",
+                        status: "locked",
+                        type: "final",
+                        surprise: {
+                            title: "The Ultimate Birthday Shayari Surprise! 🎊",
+                            content: `
+                                <div class="final-surprise">
+                                    <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">✨ A Shayari For You! ✨</h2>
+                                    <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; font-style: italic;">
+                                        "Words may fall short, but shayaris never do..."
+                                    </p>
+                                    
+                                    <div class="shayari-container" style="max-width: 800px; margin: 30px auto; background: linear-gradient(135deg, rgba(255,77,141,0.2), rgba(106,17,203,0.2)); padding: 40px; border-radius: 20px; border: 2px solid var(--accent);">
+                                        <div class="shayari-content" style="font-size: 1.4rem; line-height: 2.2;">
+                                            <p style="margin-bottom: 20px;">
+                                                🌟 <em>"Na chaand se koi shikayat, na sitaron se gila hai,</em><br>
+                                                    <em>Meri har dua mein bas tera hi zikr mila hai.</em><br>
+                                                    <em>Rab kare har janam mein tera saath mile,</em><br>
+                                                    <em>Bas itna sa khwaab is dil me basa hai!"</em> 🌟
+                                            </p>
+                                            <p style="margin-bottom: 20px;">
+                                             ✨<em>"Tu sirf ek ehsaas nahi,</em><br>
+                                                <em>Meri har khushi ka naam hai,</em><br>
+                                                <em>Rab kare teri muskaan kabhi na kho jaaye,,</em><br>
+                                                <em>Kyuki usi mein meri jaan hai."</em> 🎂💖
+                                            </p>
+                                            <p style="margin-bottom: 20px;">
+                                                💫 <em>"Khushiyon ki baarish tere naam ho,</em><br>
+                                                <em>Har sapna tera poora ho,</em><br>
+                                                <em>Janamdin par Rab se bas yahi dua hai,</em><br>
+                                                <em>Har din tera muskurata hua ho."</em> 💫🤲
+                                            </p>
+                                            <p style="margin-bottom: 20px;">
+                                               🌟<em>"Chaand bhi aaj tujhe dekh muskuraye,</em><br>
+                                                <em>Sitare bhi teri khushi mein jagmagaye,</em><br>
+                                                <em>Janamdin tera itna khaas ho,</em><br>
+                                                <em>Ki har dua tujhe gale lagaye. "</em>🎂🌹
+                                            </p>
+                                        </div>
+                                    </div>
+
+                            `
+                        }
+                    },
+                    {
+                    id: 9,
+                    title: "Final Surprise",
+                    icon: "fas fa-gift",
+                    description: "Unlock the ultimate birthday surprise!",
+                    instructions: "You've made it to the final task! Get ready for the ultimate birthday surprise. This is the grand finale of your birthday adventure.",
+                    status: "locked",
+                    type: "final",
+                    surprise: {
+                        title: "The Ultimate Birthday Surprise! 🎊",
+                        content: `
+                            <div class="final-surprise">
+                                <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">Congratulations! 🎉</h2>
+                                <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                                    You've completed all the birthday tasks! You are an amazing person who deserves all the happiness in the world.
+                                </p>
+                                <div class="final-gift" id="finalGift">
+                                    <div class="gift-box"><div class="gift-lid"></div><div class="gift-bow"></div><div class="gift-content"><i class="fas fa-heart"></i></div></div>
+                                </div>
+                                <div style="max-width: 800px; margin: 40px auto; background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 15px;">
+                                    <h3 style="color: var(--accent); margin-bottom: 20px;">Your Birthday Wish Certificate</h3>
+                                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px;">
+                                        This certifies that ${RECIPIENT_NAME} is entitled to:<br>
+                                        • Unlimited happiness for the next 365 days<br>• Endless laughter and joy<br>• Success in all endeavors<br>• Love that grows stronger each day<br>• Dreams that come true<br>• A year filled with magical moments
+                                    </p>
+                                    <p style="font-size: 1.2rem; line-height: 1.8;">Redeemable anytime, anywhere. No expiration date.</p>
+                                </div>
+                                <button id="celebrateBtn" style="padding: 15px 50px; background: linear-gradient(45deg, #ff4d8d, #6a11cb); color: white; border: none; border-radius: 50px; font-size: 1.3rem; cursor: pointer; margin-top: 20px;"><i class="fas fa-party-horn"></i> Start Ultimate Celebration!</button>
+                            </div>
+                        `
+                    }
+                }
+            ],
+            messages: [
+                "You are a gift to this world, wrapped in kindness and tied with the ribbon of love.",
+                "Your smile could light up the darkest room and your laughter is the most beautiful melody.",
+                "May your birthday be the start of a year filled with good luck, good health, and much happiness.",
+                "The more candles, the bigger the wish! Blow them all out and watch your dreams come true.",
+                "You're not getting older, you're getting more fabulous with each passing year!",
+                "Birthdays are nature's way of telling us to eat more cake and celebrate life!",
+                "Today is the oldest you've ever been and the youngest you'll ever be again. Make it count!",
+                "Your birthday is the first day of another 365-day journey around the sun. Make it incredible!",
+                "Wishing you a day that is as special in every way as you are to everyone around you.",
+                "May your birthday be filled with sunshine, smiles, laughter, and love."
+            ]
+        };
+
+        // ======================
+        // GLOBAL VARIABLES
+        // ======================
+        
+        let completedTasks = 0;
+        let currentTask = null;
+        let quizData = [
+            { question: "In which country is it traditional to pull on the birthday person's ears once for each year of their age?", options: ["Japan", "Brazil", "Italy", "Russia"], correct: 1 },
+            { question: "What does the Mexican tradition of 'La Mordida' involve?", options: ["Breaking a piñata", "The birthday person taking a bite of the cake", "Singing special songs", "Giving money gifts"], correct: 1 },
+            { question: "In Vietnam, everyone celebrates their birthday on which day?", options: ["Their actual birth date", "New Year's Day (Tet)", "The first full moon of the year", "The king's birthday"], correct: 1 },
+            { question: "What do people in China traditionally eat on their birthday for long life?", options: ["Cake", "Noodles", "Rice", "Dumplings"], correct: 1 },
+            { question: "In which country do people celebrate 'name days' in addition to birthdays?", options: ["Greece", "France", "India", "Egypt"], correct: 0 }
+        ];
+        
+        let currentQuizQuestion = 0;
+        let quizScore = 0;
+        // Fortune cookies variables
+        let cookiesCracked = 0;
+        const totalCookies = 6;
+        const fortuneMessages = [
+            "🍀 A wonderful birthday year is ahead of you, full of joy!",
+            "🎈 An unexpected gift will bring you happiness this month.",
+            "✨ Your laughter will be the music of the party.",
+            "💖 Someone special is thinking of you right now.",
+            "🌟 You will soon receive wonderful birthday wishes.",
+            "🎂 A sweet surprise is waiting just around the corner.",
+            "☀️ Your positive energy attracts amazing opportunities.",
+            "🌺 Good news will arrive before the week ends.",
+            "🕯️ Make a wish — the universe is listening closely.",
+            "💫 Adventure awaits you in the coming year!"
+        ];
+
+        // ======================
+        // INITIALIZATION
+        // ======================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            // 🎵 FIX: attempt to play audio after any user interaction to ensure autoplay works
+            setupMusicAutoPlay();
+        });
+        
+        function initializeApp() {
+            createStars();
+            createHearts();
+            renderTasks();
+            updateProgress();
+            setupEventListeners();
+        }
+
+        // 🎶 MUSIC FIX: Force play on first click/tap anywhere or via button
+        function setupMusicAutoPlay() {
+            const audio = document.getElementById('birthdayMusic');
+            const toggleBtn = document.getElementById('musicToggleBtn');
+            const statusSpan = document.getElementById('musicStatus');
+            
+            if (!audio) return;
+            
+            // Preload
+            audio.load();
+            
+            // Attempt to play - many browsers block autoplay, so we need user interaction
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Autoplay worked!
+                    if (toggleBtn) {
+                        toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+                        statusSpan.innerText = '(playing)';
+                    }
+                }).catch(() => {
+                    // Autoplay blocked, show play button
+                    if (toggleBtn) {
+                        toggleBtn.innerHTML = '<i class="fas fa-play"></i> Play Music';
+                        statusSpan.innerText = '(click to play)';
+                    }
+                });
+            }
+            
+            // Manual toggle
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (audio.paused) {
+                        audio.play().then(() => {
+                            toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Music';
+                            statusSpan.innerText = '(playing)';
+                        }).catch(e => console.log('play failed:', e));
+                    } else {
+                        audio.pause();
+                        toggleBtn.innerHTML = '<i class="fas fa-play"></i> Play Music';
+                        statusSpan.innerText = '(paused)';
+                    }
+                });
+            }
+            
+            // Also attempt to play on first body click (helps some browsers)
+            document.body.addEventListener('click', function once() {
+                if (audio.paused) {
+                    audio.play().catch(() => {}); // silent catch
+                }
+                document.body.removeEventListener('click', once);
+            }, { once: true });
+        }
+        
+        // ======================
+        // BACKGROUND EFFECTS
+        // ======================
+        
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.opacity = Math.random() * 0.5 + 0.5;
+                star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
+                container.appendChild(star);
+            }
+        }
+        
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.opacity = Math.random() * 0.3 + 0.1;
+                container.appendChild(heart);
+            }
+        }
+        
+        // ======================
+        // TASK MANAGEMENT
+        // ======================
+        
+        function renderTasks() {
+            const container = document.getElementById('tasksContainer');
+            container.innerHTML = '';
+            
+            birthdayData.tasks.forEach(task => {
+                const taskCard = document.createElement('div');
+                taskCard.className = `task-card ${task.status}`;
+                taskCard.innerHTML = `
+                    <div class="task-number">${task.id}</div>
+                    <div class="task-icon"><i class="${task.icon}"></i></div>
+                    <h3 class="task-title">${task.title}</h3>
+                    <p class="task-description">${task.description}</p>
+                    <button class="task-button" ${task.status === 'locked' ? 'disabled' : ''} data-task-id="${task.id}">
+                        ${task.status === 'completed' ? '<i class="fas fa-check"></i> Completed' : 
+                          task.status === 'available' ? '<i class="fas fa-play"></i> Start Task' : 
+                          '<i class="fas fa-lock"></i> Locked'}
+                    </button>
+                    <div class="task-status ${task.status}">${task.status === 'completed' ? 'Completed' : task.status === 'locked' ? 'Locked' : 'Available'}</div>
+                `;
+                container.appendChild(taskCard);
+            });
+            
+            document.querySelectorAll('.task-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const taskId = parseInt(this.getAttribute('data-task-id'));
+                    startTask(taskId);
+                });
+            });
+        }
+        
+        function startTask(taskId) {
+            currentTask = birthdayData.tasks.find(task => task.id === taskId);
+            if (!currentTask || currentTask.status === 'locked') return;
+            
+            document.getElementById('modalTitle').textContent = currentTask.title;
+            document.getElementById('modalInstructions').textContent = currentTask.instructions;
+            document.getElementById('instructionsModal').classList.add('active');
+        }
+        
+        function completeTask() {
+            if (!currentTask) return;
+            
+            currentTask.status = 'completed';
+            completedTasks++;
+            
+            const nextTask = birthdayData.tasks.find(task => task.id === currentTask.id + 1);
+            if (nextTask) nextTask.status = 'available';
+            
+            updateProgress();
+            renderTasks();
+            showSurprise(currentTask.surprise);
+            triggerCelebration();
+            document.getElementById('instructionsModal').classList.remove('active');
+        }
+        
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const completedTasksElement = document.getElementById('completedTasks');
+            const completedCounter = document.getElementById('completedCounter');
+            const percentage = (completedTasks / birthdayData.tasks.length) * 100;
+            progressFill.style.width = `${percentage}%`;
+            completedTasksElement.textContent = completedTasks;
+            completedCounter.textContent = `${completedTasks}/${birthdayData.tasks.length}`;
+        }
+        
+        function showSurprise(surprise) {
+            const contentArea = document.getElementById('surpriseContent');
+            const contentInner = document.getElementById('surpriseContentInner');
+            contentInner.innerHTML = `<h2 class="surprise-title">${surprise.title}</h2>${surprise.content}`;
+            contentArea.classList.add('active');
+            contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            initializeSurpriseContent();
+        }
+        
+        function initializeSurpriseContent() {
+            if (!currentTask) return;
+            
+            switch(currentTask.type) {
+                case 'cake': setupCakeTask(); break;
+                case 'fortune': setupFortuneCookieTask(); break; // 🆕 NEW FORTUNE COOKIE
+                case 'wisdom': setupWisdomTask(); break;
+                case 'quiz': setupQuizTask(); break;
+                case 'final': setupFinalTask(); break;
+            }
+        }
+        
+        // ======================
+        // NEW TASK: BIRTHDAY FORTUNE COOKIES (replaces Wish Upon a Star)
+        // ======================
+        function setupFortuneCookieTask() {
+            cookiesCracked = 0;
+            const jar = document.getElementById('cookieJar');
+            if (!jar) return;
+            
+            jar.innerHTML = '';
+            // Create 6 cookies
+            for (let i = 0; i < totalCookies; i++) {
+                const cookie = document.createElement('div');
+                cookie.className = 'cookie';
+                cookie.innerHTML = '🥠';
+                cookie.dataset.index = i;
+                cookie.dataset.cracked = 'false';
+                cookie.addEventListener('click', function() {
+                    if (cookie.dataset.cracked === 'false') {
+                        crackCookie(cookie);
+                    }
+                });
+                jar.appendChild(cookie);
+            }
+            
+            const completeBtn = document.getElementById('fortuneCompleteBtn');
+            if (completeBtn) {
+                completeBtn.disabled = true;
+                completeBtn.onclick = function() {
+                    if (cookiesCracked >= totalCookies) {
+                        // Mark task as complete
+                        if (currentTask && currentTask.status === 'available') {
+                            completeTask();
+                        }
+                    }
+                };
+            }
+            
+            const counterP = document.getElementById('cookieCounter');
+            if (counterP) counterP.innerText = `Cookies cracked: 0/${totalCookies}`;
+            const display = document.getElementById('fortuneDisplay');
+            if (display) display.innerHTML = '🥠 Click a cookie to reveal your birthday fortune!';
+        }
+        
+        function crackCookie(cookieEl) {
+            if (cookieEl.dataset.cracked === 'true') return;
+            
+            cookieEl.dataset.cracked = 'true';
+            cookieEl.classList.add('cracked');
+            cookieEl.innerHTML = '🥠✨'; // cracked open
+            
+            // Increment counter
+            cookiesCracked++;
+            const counterP = document.getElementById('cookieCounter');
+            if (counterP) counterP.innerText = `Cookies cracked: ${cookiesCracked}/${totalCookies}`;
+            
+            // Show random fortune
+            const randomFortune = fortuneMessages[Math.floor(Math.random() * fortuneMessages.length)];
+            const display = document.getElementById('fortuneDisplay');
+            if (display) display.innerHTML = `✨ "${randomFortune}" ✨`;
+            
+            // Enable complete button if all cookies cracked
+            if (cookiesCracked >= totalCookies) {
+                const completeBtn = document.getElementById('fortuneCompleteBtn');
+                if (completeBtn) {
+                    completeBtn.disabled = false;
+                    completeBtn.innerHTML = '<i class="fas fa-check-circle"></i> All Fortunes Revealed! Complete Task';
+                }
+                // Trigger mini celebration
+                triggerCelebration();
+            }
+        }
+        
+        // ======================
+        // OTHER TASK SETUP (CAKE, WISDOM, QUIZ, FINAL)
+        // ======================
+        
+        function setupCakeTask() {
+            const blowButton = document.getElementById('blowCandles');
+            const wishMessage = document.getElementById('wishMessage');
+            if (!blowButton) return;
+            blowButton.addEventListener('click', function() {
+                const flames = ['flame1','flame2','flame3'];
+                flames.forEach((f,idx) => { setTimeout(() => { const el = document.getElementById(f); if(el) el.style.animation = 'blowOut 0.5s forwards'; }, idx*300); });
+                setTimeout(() => { if(wishMessage) { wishMessage.textContent = "Your wish has been sent to the universe! It will come true! ✨"; wishMessage.style.opacity = '1'; } 
+                    blowButton.innerHTML = '<i class="fas fa-check"></i> Wish Made!'; blowButton.style.background = 'linear-gradient(45deg, #4cd964, #2ecc71)'; blowButton.disabled = true; }, 1000);
+            });
+        }
+        
+        function setupWisdomTask() {
+            const gen = document.getElementById('generateWish');
+            const rw = document.getElementById('randomWish');
+            if (!gen) return;
+            const addWishes = ["May your birthday be sprinkled with fun and laughter!","Wishing you a day filled with happy moments and treasured memories.","May all your birthday wishes come true, today and always.","Here's to a year filled with new adventures and exciting opportunities!","May your special day be as incredible as you are.","Wishing you health, happiness, and prosperity in the coming year.","May your birthday be the beginning of your most amazing year yet!","Sending you smiles for every moment of your special day.","Hope your birthday is as sweet as cake and as bright as candles!","May your birthday be filled with the love of family and friends."];
+            gen.addEventListener('click', function() {
+                if (rw) { rw.textContent = addWishes[Math.floor(Math.random() * addWishes.length)]; rw.style.display = 'block'; rw.style.opacity = '0'; setTimeout(() => { rw.style.transition = 'opacity 0.5s ease'; rw.style.opacity = '1'; }, 10); }
+            });
+        }
+        
+        function setupQuizTask() {
+            currentQuizQuestion = 0; quizScore = 0; document.getElementById('quizScore').textContent = '0';
+            loadQuizQuestion();
+            const nextButton = document.getElementById('nextQuestion');
+            if (nextButton) nextButton.addEventListener('click', function() { currentQuizQuestion++; if (currentQuizQuestion < quizData.length) loadQuizQuestion(); else showQuizResults(); });
+        }
+        
+        function loadQuizQuestion() {
+            const qd = quizData[currentQuizQuestion];
+            document.getElementById('currentQuestion').textContent = currentQuizQuestion + 1;
+            document.getElementById('quizQuestion').textContent = qd.question;
+            document.getElementById('quizScore').textContent = quizScore;
+            const opts = document.getElementById('quizOptions'); opts.innerHTML = '';
+            qd.options.forEach((opt, idx) => {
+                const btn = document.createElement('button'); btn.className = 'quiz-option'; btn.textContent = opt; btn.setAttribute('data-correct', idx === qd.correct);
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.quiz-option').forEach(b => { b.disabled = true; if (b.getAttribute('data-correct')==='true') b.classList.add('correct'); else b.classList.add('incorrect'); });
+                    if (idx === qd.correct) { quizScore++; document.getElementById('quizScore').textContent = quizScore; }
+                    document.getElementById('nextQuestion').style.display = 'block';
+                });
+                opts.appendChild(btn);
+            });
+            document.getElementById('nextQuestion').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'none';
+        }
+        
+        function showQuizResults() {
+            const rc = document.getElementById('quizResult'); if (!rc) return;
+            let html = '<h3 style="color: var(--accent); margin-bottom: 15px;">Quiz Complete!</h3>';
+            if (quizScore === quizData.length) html += '<p style="font-size: 1.2rem;">Perfect score! You\'re a birthday expert! 🎉</p>';
+            else if (quizScore >= quizData.length*0.7) html += '<p style="font-size: 1.2rem;">Great job! You know your birthday trivia! 👍</p>';
+            else html += '<p style="font-size: 1.2rem;">Good effort! You learned something new today! 🌟</p>';
+            html += `<p style="font-size: 1.2rem;">Your score: ${quizScore} out of ${quizData.length}</p>`;
+            rc.innerHTML = html; rc.style.display = 'block';
+        }
+        
+        function setupFinalTask() {
+            const finalGift = document.getElementById('finalGift');
+            const celebrateBtn = document.getElementById('celebrateBtn');
+            if (finalGift) finalGift.addEventListener('click', function() { this.querySelector('.gift-box').classList.toggle('open'); if (this.querySelector('.gift-box').classList.contains('open')) { setTimeout(() => { triggerUltimateCelebration(); }, 500); } });
+            if (celebrateBtn) celebrateBtn.addEventListener('click', function() { triggerUltimateCelebration(); this.innerHTML = '<i class="fas fa-party-horn"></i> Celebration in Progress!'; this.disabled = true; });
+        }
+        
+        // ======================
+        // CELEBRATION EFFECTS (unchanged)
+        // ======================
+        function triggerCelebration() {
+            const celebration = document.getElementById('celebrationContainer');
+            if (!celebration) return; celebration.classList.add('active');
+            for (let i = 0; i < 100; i++) createConfetti();
+            for (let i = 0; i < 10; i++) setTimeout(() => createFirework(), i * 300);
+            for (let i = 0; i < 15; i++) setTimeout(() => createBalloon(), i * 200);
+            setTimeout(() => { celebration.classList.remove('active'); celebration.innerHTML = ''; }, 5000);
+        }
+        function triggerUltimateCelebration() {
+            const celebration = document.getElementById('celebrationContainer');
+            if (!celebration) return; celebration.classList.add('active');
+            for (let i = 0; i < 300; i++) setTimeout(() => createConfetti(), i * 10);
+            for (let i = 0; i < 20; i++) setTimeout(() => { createFirework(); createFirework(); }, i * 200);
+            for (let i = 0; i < 30; i++) setTimeout(() => createBalloon(), i * 100);
+            setTimeout(() => { celebration.classList.remove('active'); celebration.innerHTML = ''; }, 10000);
+        }
+        function createConfetti() { 
+            const c = document.getElementById('celebrationContainer'); if(!c) return; const e=document.createElement('div'); e.className='confetti'; e.style.backgroundColor=['#ff4d8d','#6a11cb','#ff9500','#4cd964','#5ac8fa','#ffcc00'][Math.floor(Math.random()*6)]; e.style.left=Math.random()*100+'vw'; e.style.top='-20px'; e.style.transform='rotate('+Math.random()*360+'deg)'; e.style.opacity=Math.random()*0.5+0.5; c.appendChild(e); const d=Math.random()*3000+2000, dl=Math.random()*1000; e.animate([{transform:'translate(0,0) rotate(0deg)', opacity:0},{transform:'translate('+(Math.random()*100-50)+'px, 50px) rotate(180deg)', opacity:1},{transform:'translate('+(Math.random()*100-50)+'px, 100vh) rotate(360deg)', opacity:0}], {duration:d, delay:dl, easing:'cubic-bezier(0.215, 0.610, 0.355, 1)'}); setTimeout(()=>{ if(e.parentNode) e.parentNode.removeChild(e); }, d+dl); }
+        function createFirework() { 
+            const c=document.getElementById('celebrationContainer'); if(!c) return; const e=document.createElement('div'); e.className='firework'; const col=['#ff4d8d','#6a11cb','#ff9500','#4cd964','#5ac8fa','#ffcc00'][Math.floor(Math.random()*6)]; e.style.setProperty('--firework-color',col); e.style.left=Math.random()*80+10+'vw'; e.style.top=Math.random()*80+10+'vh'; c.appendChild(e); e.animate([{width:'5px',height:'5px',opacity:1,boxShadow:'0 0 10px '+col},{width:'100px',height:'100px',opacity:0,boxShadow:'0 0 40px '+col}],{duration:1000,easing:'ease-out'}); setTimeout(()=>{ if(e.parentNode) e.parentNode.removeChild(e); },1000); }
+        function createBalloon() { 
+            const c=document.getElementById('celebrationContainer'); if(!c) return; const e=document.createElement('div'); e.className='balloon'; const col=['#ff4d8d','#6a11cb','#ff9500','#4cd964','#5ac8fa','#ffcc00'][Math.floor(Math.random()*6)]; e.style.backgroundColor=col; e.style.left=Math.random()*80+10+'vw'; c.appendChild(e); const d=Math.random()*5000+5000, dl=Math.random()*1000; e.animate([{bottom:'-100px',opacity:0},{bottom:'20px',opacity:1},{bottom:'100vh',opacity:0.7}],{duration:d,delay:dl,easing:'cubic-bezier(0.215, 0.610, 0.355, 1)'}); setTimeout(()=>{ if(e.parentNode) e.parentNode.removeChild(e); },d+dl); }
+        
+        // ======================
+        // EVENT LISTENERS SETUP
+        // ======================
+        function setupEventListeners() {
+            document.getElementById('startTask').addEventListener('click', completeTask);
+            document.getElementById('cancelTask').addEventListener('click', function() { document.getElementById('instructionsModal').classList.remove('active'); });
+            document.getElementById('closeModal').addEventListener('click', function() { document.getElementById('instructionsModal').classList.remove('active'); });
+            document.getElementById('closeSurprise').addEventListener('click', function() { document.getElementById('surpriseContent').classList.remove('active'); });
+            document.getElementById('instructionsModal').addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.getElementById('instructionsModal').classList.remove('active'); document.getElementById('surpriseContent').classList.remove('active'); } });
+        }
+    </script>
+</body>
+</html>
